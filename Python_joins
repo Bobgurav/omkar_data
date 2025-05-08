@@ -1,0 +1,36 @@
+import pandas as pd
+
+emp = {'eid':[10,11,12,13,16],'ename':['omkar','sourabh','kashi','sohel','ajeet']}
+print(emp)
+emp_df = pd.DataFrame(data=emp)
+print(emp_df)
+print('-'*100)
+salary = {'salary':[2000,6000,3000,8000,6500],'eid':[10,11,15,16,13]}
+salary_df = pd.DataFrame(data=salary)
+print(salary_df)
+print('-'*100)
+dept = {'id':[10,11,13,17,18],'loaction':['hyd','pune','delhi','bengalur','chennai']}
+dept_df = pd.DataFrame(data=dept)
+print(dept_df)
+
+inner_join = emp_df.merge(salary_df,how='inner',on='eid')
+print(inner_join)
+
+left_join = emp_df.merge(dept_df,how='left',left_on='eid',right_on='id')
+print(left_join)
+left_joinsss = left_join.drop(columns='id')
+print (left_joinsss)
+
+right_join = emp_df.merge(salary_df,how='right',on='eid')
+print(right_join)
+
+full_join = emp_df.merge(salary_df,how='outer',on='eid')
+print(full_join)
+
+cross_join = emp_df.merge(salary_df,how='cross')
+print(cross_join)
+print('-'*100)
+dept_df
+combine = pd.concat([emp_df,salary_df,dept_df],axis=1)
+print(combine)
+print('-'*100)
